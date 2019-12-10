@@ -11,7 +11,7 @@ import com.howtodoinjava.anotation.EntityRepoServiceMapper;
 import com.howtodoinjava.demo.repository.EmployeeRepository;
 import com.howtodoinjava.demo.service.EmployeeService;
 
-@EntityRepoServiceMapper(iid = "EmployeeEntity",repoClass = EmployeeRepository.class,serviceClass = EmployeeService.class)
+@EntityRepoServiceMapper(serviceClass = EmployeeService.class,repoClass = EmployeeRepository.class)
 @Entity
 @Table(name="TBL_EMPLOYEES")
 public class EmployeeEntity extends BaseEntity{

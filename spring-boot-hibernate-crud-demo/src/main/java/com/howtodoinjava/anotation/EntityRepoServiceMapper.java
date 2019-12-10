@@ -18,8 +18,6 @@ import java.lang.annotation.Target;
  *
  */
 public @interface EntityRepoServiceMapper {
-	public String iid() default "DEFAULT";
-
 	public Class<?> repoClass();
 	public Class<?> serviceClass();
 }
