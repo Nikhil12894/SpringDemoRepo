@@ -18,14 +18,14 @@ import com.howtodoinjava.demo.repository.GenericRepository;
 public class EmployeeService implements BaseEntityService<EmployeeEntity> {
 
 	@Autowired
-	GenericRepository reposetory;
+	EmployeeRepository reposetory;
 	
 	public EmployeeService() {
 	}
 	
 	@Override
 	public List<EmployeeEntity> getAll() {
-		return (List<EmployeeEntity>) reposetory.findAll(EmployeeEntity.class);
+		return reposetory.findAll();
 	}
 
 	@Override

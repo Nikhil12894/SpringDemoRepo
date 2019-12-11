@@ -1,26 +1,28 @@
 package com.howtodoinjava.demo.repository;
 
 import java.util.Iterator;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.QueryMethod;
 import org.springframework.data.repository.support.Repositories;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
 
-@Service
+import com.howtodoinjava.demo.DemoApplication;
+
+//@Service
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class GenericRepository {
 
-    @Autowired
-    private WebApplicationContext appContext;
+    private ConfigurableApplicationContext appContext=DemoApplication.ctx;
 
     Repositories repositories = null;
 
     public GenericRepository() {
-    	
-    	
     	Repositories repositories = new Repositories(appContext.getBeanFactory());
     	Iterator it = repositories.iterator();
     	 while(it.hasNext()) {
@@ -30,7 +32,7 @@ public class GenericRepository {
     	  //Get Query Methods
     	  List<QueryMethod> methods = repositories.getQueryMethodsFor(domainClass);
     	 }
-        repositories = new Repositories(appContext.fac);
+//        repositories = new Repositories(appContext.fac);
     }
 
 	public JpaRepository getRepository(Class<?> entity) {

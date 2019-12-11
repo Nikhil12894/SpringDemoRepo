@@ -12,6 +12,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 
+import com.google.gson.Gson;
 import com.howtodoinjava.nk.PostProxy;
 
 public class PostProxySpringContextListener implements ApplicationListener<ContextRefreshedEvent> {
@@ -21,6 +22,9 @@ private static Logger LOG = LoggerFactory.getLogger(PostProxySpringContextListen
 @Override
 public void onApplicationEvent(ContextRefreshedEvent event) {
     ApplicationContext context = event.getApplicationContext();
+    Gson gson = new Gson();
+    System.out.println("*****************************************************************************************************");
+    System.out.println(gson.toJson(context));
     String[] beanDefinitionNames = context.getBeanDefinitionNames();
     for (String beanDefinitionName : beanDefinitionNames) {
         String originalClassName = getOriginalClassName(beanDefinitionName, event);
