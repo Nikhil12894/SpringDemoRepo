@@ -12,20 +12,18 @@ import com.howtodoinjava.demo.exception.RecordNotFoundException;
 import com.howtodoinjava.demo.model.EmployeeEntity;
 import com.howtodoinjava.demo.repository.EmployeeRepository;
 import com.howtodoinjava.demo.repository.GenericRepository;
+import com.howtodoinjava.nk.CassRepoAndServiceLoaderFactory;
 
-@Service
-@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class EmployeeService implements BaseEntityService<EmployeeEntity> {
 
-	@Autowired
-	EmployeeRepository reposetory;
 	
 	public EmployeeService() {
+		System.out.println("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
 	}
 	
 	@Override
 	public List<EmployeeEntity> getAll() {
-		return reposetory.findAll();
+		return CassRepoAndServiceLoaderFactory.factory().modelSetups.get("EmployeeEntity").repository.findAll();
 	}
 
 	@Override
